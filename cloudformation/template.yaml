@@ -1322,8 +1322,6 @@ Resources:
 
   CognitoUserPool:
     Type: AWS::Cognito::UserPool
-    #DeletionPolicy:  !If [ 'DevelopmentMode', 'Retain', 'Delete']
-    #UpdateReplacePolicy: Retain
     Properties:
       UserPoolName: !Ref CognitoIdentityPoolName
       # Lambda trigger caveats:
@@ -1665,8 +1663,6 @@ Resources:
 
   CognitoAdminsGroup:
     Type: AWS::Cognito::UserPoolGroup
-    #DeletionPolicy: !If [ 'DevelopmentMode', 'Retain', 'Delete']
-    #UpdateReplacePolicy: Retain
     Properties:
       Description: 'Admin users of the developer portal'
       GroupName: !Join ['', [!Ref 'AWS::StackName', 'AdminsGroup']]
@@ -1678,8 +1674,6 @@ Resources:
 
   CognitoRegisteredGroup:
     Type: AWS::Cognito::UserPoolGroup
-    #DeletionPolicy: !If [ 'DevelopmentMode', 'Retain', 'Delete']
-    #UpdateReplacePolicy: Retain
     Properties:
       Description: 'Registered users in the developer portal'
       GroupName: !Sub '${AWS::StackName}-RegisteredGroup'
