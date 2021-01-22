@@ -1322,7 +1322,7 @@ Resources:
 
   CognitoUserPool:
     Type: AWS::Cognito::UserPool
-    DeletionPolicy: Retain
+    DeletionPolicy:  !If [ 'DevelopmentMode', 'Retain', 'Delete']
     UpdateReplacePolicy: Retain
     Properties:
       UserPoolName: !Ref CognitoIdentityPoolName
@@ -1665,7 +1665,7 @@ Resources:
 
   CognitoAdminsGroup:
     Type: AWS::Cognito::UserPoolGroup
-    DeletionPolicy: Retain
+    DeletionPolicy: !If [ 'DevelopmentMode', 'Retain', 'Delete']
     UpdateReplacePolicy: Retain
     Properties:
       Description: 'Admin users of the developer portal'
@@ -1678,7 +1678,7 @@ Resources:
 
   CognitoRegisteredGroup:
     Type: AWS::Cognito::UserPoolGroup
-    DeletionPolicy: Retain
+    DeletionPolicy: !If [ 'DevelopmentMode', 'Retain', 'Delete']
     UpdateReplacePolicy: Retain
     Properties:
       Description: 'Registered users in the developer portal'
